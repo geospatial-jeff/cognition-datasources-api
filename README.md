@@ -2,7 +2,7 @@
 
 STAC compliant dynamic API for searching geospatial assets, powered by [cognition-datasources](https://github.com/geospatial-jeff/cognition-datasources).  Deployed with Flask and AWS Elasticbeanstalk.
 
-Currently hosted at `http://cognition-datasources-stac-dev.us-east-1.elasticbeanstalk.com/`
+Currently hosted at `http://cognition-datasources.wekg62sdma.us-east-1.elasticbeanstalk.com`
 
 Supports the following datasets (more information [https://github.com/geospatial-jeff/cognition-datasources]):
 - Digital Globe Open Data Program
@@ -36,7 +36,7 @@ Supports the following datasets (more information [https://github.com/geospatial
 import requests
 import json
 
-endpoint = "http://cognition-datasources-stac-dev.us-east-1.elasticbeanstalk.com/stac/search"
+endpoint = "http://cognition-datasources.wekg62sdma.us-east-1.elasticbeanstalk.com/stac/search"
 
 geoj =  {"type": "Polygon", "coordinates": [[[-87.5390625, 32.84267363195431], [-81.9140625, 32.84267363195431], [-81.9140625, 37.43997405227057], [-87.5390625, 37.43997405227057], [-87.5390625, 32.84267363195431]]]}
 
