@@ -4,7 +4,7 @@ STAC compliant dynamic API for searching geospatial assets, powered by [cognitio
 
 Currently hosted at `http://cognition-datasources.wekg62sdma.us-east-1.elasticbeanstalk.com`
 
-Supports the following datasets (more information [https://github.com/geospatial-jeff/cognition-datasources]):
+Supports the following datasets:
 - Digital Globe Open Data Program
 - ElevationTiles
 - CBERS
