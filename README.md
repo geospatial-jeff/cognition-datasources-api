@@ -1,8 +1,8 @@
 # cognition-datasources-api
 
-STAC compliant dynamic API for searching geospatial assets, powered by [cognition-datasources](https://github.com/geospatial-jeff/cognition-datasources).  Deployed with Flask and AWS Elasticbeanstalk.
+STAC compliant dynamic API for searching geospatial assets, powered by [cognition-datasources](https://github.com/geospatial-jeff/cognition-datasources).
 
-Currently hosted at `http://cognition-datasources.wekg62sdma.us-east-1.elasticbeanstalk.com`
+Currently hosted at `https://rx00ss9g38.execute-api.us-east-1.amazonaws.com/`
 
 Supports the following datasets:
 - Digital Globe Open Data Program
@@ -36,18 +36,43 @@ Supports the following datasets:
 import requests
 import json
 
-endpoint = "http://cognition-datasources.wekg62sdma.us-east-1.elasticbeanstalk.com/stac/search"
-
-geoj =  {"type": "Polygon", "coordinates": [[[-87.5390625, 32.84267363195431], [-81.9140625, 32.84267363195431], [-81.9140625, 37.43997405227057], [-87.5390625, 37.43997405227057], [-87.5390625, 32.84267363195431]]]}
+geoj =  {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.91064453125,
+              28.825425374477224
+            ],
+            [
+              -93.88916015625,
+              28.825425374477224
+            ],
+            [
+              -93.88916015625,
+              30.44867367928756
+            ],
+            [
+              -95.91064453125,
+              30.44867367928756
+            ],
+            [
+              -95.91064453125,
+              28.825425374477224
+            ]
+          ]
+        ]
+      }
 
 
 payload = {"intersects": geoj,
-           "datasources": ["Landsat8", "Sentinel2"]
+           "datasources": ["NAIP", "Landsat8", "Sentinel2", "SRTM"],
            }
 
 
-r = requests.post(endpoint, data=json.dumps(payload))
-print(r.json())
+r = requests.post('https://rx00ss9g38.execute-api.us-east-1.amazonaws.com/prod/stac/search', data=json.dumps(payload))
+response = r.json()
+print(response)
 ```
 
 #### Response
