@@ -2,7 +2,7 @@
 
 STAC compliant dynamic API for searching geospatial assets, powered by [cognition-datasources](https://github.com/geospatial-jeff/cognition-datasources).
 
-Currently hosted at `https://rx00ss9g38.execute-api.us-east-1.amazonaws.com/`
+Currently hosted at **`https://uh2bdjpxkl.execute-api.us-east-1.amazonaws.com/dev/`**
 
 Supports the following datasets:
 - Digital Globe Open Data Program
@@ -15,6 +15,26 @@ Supports the following datasets:
 - Sentinel2
 - SRTM
 - USGS 3DEP
+
+This deployment was created with the following commands:
+```
+git clone https://github.com/geospatial-jeff/cognition-datasources.git app
+cd app
+python setup.py develop
+
+# Load drivers
+cognition-datasources load -d DGOpenData -d ElevationTiles -d CBERS -d Landsat8 -d MicrosoftBuildingFootprints \
+                           -d NAIP -d Sentinel1 -d Sentinel2 -d SRTM -d USGS3DEP
+
+# Build Docker container
+docker build . -t cognition-datasources-deploy:latest
+
+# Package the layer
+docker run --rm -v $PWD:/home/cognition-datasources -it cognition-datasources-deploy:latest package-service.sh
+
+# Deploy to AWS
+sls deploy -v
+```
 
 ## Endpoints
 - POST /stac/search - full STAC query
@@ -70,7 +90,7 @@ payload = {"intersects": geoj,
            }
 
 
-r = requests.post('https://rx00ss9g38.execute-api.us-east-1.amazonaws.com/prod/stac/search', data=json.dumps(payload))
+r = requests.post('https://uh2bdjpxkl.execute-api.us-east-1.amazonaws.com/dev/stac/search', data=json.dumps(payload))
 response = r.json()
 print(response)
 ```

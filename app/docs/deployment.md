@@ -9,13 +9,13 @@ Drivers which also package spatial coverages are currently not compatible with l
 ```
 git clone https://github.com/geospatial-jeff/cognition-datasources my-cd-deployment
 cd my-cd-deployment
-python setup.py install
+python setup.py develop
 ```
 
 **(2). Load datasources into your deployment.**
 
 ```
-cognition-datasources -d Landsat8 -d Sentinel2
+cognition-datasources load -d Landsat8 -d Sentinel2
 ```
 
 This command will populate `serverless.yml` and `handler.py` with all of the necessary configuration and code to create the service.  Each driver is packaged as its own lambda function.
@@ -47,15 +47,13 @@ The deployment generates an AWS API Gateway endpoint which supports STAC-complia
 **(1). Clone the library and install the CLI.**
 
 ```
-git clone https://github.com/geospatial-jeff/cognition-datasources my-cd-deployment
-cd my-cd-deployment
-python setup.py install
+pip install git+https://github.com/geospatial-jeff/cognition-datasources
 ```
 
 **(2). Load datasources into your deployment while enabling the `local` flag.**
 
 ```
-cognition-datasources -d Landsat8 -d Sentinel2 --local
+cognition-datasources load -d Landsat8 -d Sentinel2 --local
 ```
 
 While the local flag is enabled, the driver and its dependencies will be installed locally.  The driver is stored in the `./datasources/sources/` folder while all dependencies are installed to the default location of the current environment.

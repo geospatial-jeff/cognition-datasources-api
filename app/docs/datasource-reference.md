@@ -7,20 +7,22 @@
 | Spatial | :heavy_check_mark: |
 | Temporal | :heavy_check_mark: |
 | Properties | :heavy_check_mark: |
-| **kwargs | [limit] |
+| **kwargs | [limit, subdatasets] |
+
+* The `subdatasets` kwarg allows querying by sensor (mux, awfi, pan5m, and pan10m).
 
 ##### Properties
 | Property | Type | Example |
 |--------------------------|-------|-------------|
 | eo:gsd | float | 20.0 |
 | eo:epsg | int | 32614 |
-| eo:instrument | str | 'AWFI' |
 | eo:platform | str | 'CBERS' |
 | eo:sun_azimuth | float | 154.88 |
 | eo:sun_elevation | float | 28.26 |
-| legacy:row | str | '230' |
-| legacy:path | str | '049' |
-| legacy:processing_level | str | 'L2' |
+| eo:off_nadir | float | 0.004 |
+| cbers:data_type | str | 'L2' |
+| cbers:path | int | 229 |
+| cbers:row | int | '48 |
 ---
 [![CircleCI](https://circleci.com/gh/geospatial-jeff/cognition-datasources-dgopendata.svg?style=svg)](https://circleci.com/gh/geospatial-jeff/cognition-datasources-dgopendata)
 
@@ -92,6 +94,10 @@
 | eo:row | str | '030' |
 | eo:column | str | '032' |
 | landsat:processing_level | str | 'L1TP' |
+| landsat:product_id | str | 'LC08_L1TP_032028_20190616_20190617_01_RT' |
+| landsat:scene_id | str | 'LC80320282019167LGN00' |
+| landsat:tier | str | 'RT' |
+| landsat:revision | str | '00' |
 ---
 [![CircleCI](https://circleci.com/gh/geospatial-jeff/cognition-datasources-mbf.svg?style=svg)](https://circleci.com/gh/geospatial-jeff/cognition-datasources-mbf)
 
@@ -135,7 +141,41 @@
 | eo:epsg | int | 26914 |
 | eo:instrument | str | 'Leica ADS100' |
 ---
+[![CircleCI](https://circleci.com/gh/geospatial-jeff/cognition-datasources-planet.svg?style=svg)](https://circleci.com/gh/geospatial-jeff/cognition-datasources-planet)
 
+## PlanetData
+
+| Parameter | Status |
+| ----------| ------ |
+| Spatial | :heavy_check_mark: |
+| Temporal | :heavy_check_mark: |
+| Properties | :heavy_check_mark: |
+| **kwargs | [subdatasets] |
+
+##### Properties
+| Property | Type | Example |
+|--------------------------|-------|-------------|
+| eo:gsd | float | 0.9 |
+| eo:instrument | str | 'SSC1' |
+| eo:off_nadir | float | 26.3 |
+| eo:instrument | str | 'SSC1' |
+| eo:azimuth | float | 163.4 |
+| eo:sun_azimuth | int | 139 |
+| eo:sun_elevation | float | 70.1 |
+| eo:cloud_cover | float | 0.06 |
+| legacy:camera_id | str | 'd2' |
+| legacy:ground_conrol | bool | true |
+| legacy:item_type | str | 'SkySatScene' |
+| legacy:provider | str | 'skysat' |
+| legacy:published | str | "2019-05-13T04:50:40.092Z" |
+| legacy:quality_category | str | "standard" |
+| legacy:strip_id | str | 's3_20190512T185450Z' |
+| legacy:updated | str | '2019-06-01T19:14:40.178Z' |
+
+
+
+
+---
 [![CircleCI](https://circleci.com/gh/geospatial-jeff/cognition-datasources-sentinel1.svg?style=svg)](https://circleci.com/gh/geospatial-jeff/cognition-datasources-sentinel1)
 
 ## Sentinel1
@@ -172,12 +212,12 @@
 ##### Properties
 | Property | Type | Example |
 |--------------------------|-------|-------------|
-| eo:gsd | float | 10.0 |
+| eo:gsd | int | 10 |
 | eo:epsg | int | 32614 |
 | eo:instrument | str | 'MSI' |
 | eo:platform | str | 'sentinel-2b' |
-| eo:off_nadir | float | 0.0 |
-| eo:cloud_cover | float | 100.0 |
+| eo:off_nadir | int | 0 |
+| eo:cloud_cover | int | 100 |
 | sentinel:utm_zone | int | 13 |
 | sentinel:latitude_band | str | 'T' |
 | sentinel:grid_square | str | 'GJ' |

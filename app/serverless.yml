@@ -1,59 +1,58 @@
 custom:
-  service-name: cognition-datasources-api
-  stage: prod
+  service-name: cognition-datasources-deploy
+  stage: dev
 functions:
   CBERS:
     handler: handler.CBERS
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
-    - arn:aws:lambda:us-east-1:725820063953:layer:cbers-driver:1
-    - arn:aws:lambda:us-east-1:725820063953:layer:cbers-coverage:1
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
+    - arn:aws:lambda:us-east-1:725820063953:layer:cbers-driver:2
   DGOpenData:
     handler: handler.DGOpenData
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
     - arn:aws:lambda:us-east-1:725820063953:layer:dg-opendata-driver:1
     - arn:aws:lambda:us-east-1:725820063953:layer:dg-disaster-coverages:1
   ElevationTiles:
     handler: handler.ElevationTiles
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
     - arn:aws:lambda:us-east-1:725820063953:layer:elevation-tiles-driver:1
   Landsat8:
     handler: handler.Landsat8
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
-    - arn:aws:lambda:us-east-1:725820063953:layer:landsat8:2
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
+    - arn:aws:lambda:us-east-1:725820063953:layer:landsat8:3
   MicrosoftBuildingFootprints:
     handler: handler.MicrosoftBuildingFootprints
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
     - arn:aws:lambda:us-east-1:725820063953:layer:mbf-driver:1
   NAIP:
     handler: handler.NAIP
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
     - arn:aws:lambda:us-east-1:725820063953:layer:naip-driver:3
     - arn:aws:lambda:us-east-1:725820063953:layer:naip-coverages:1
   SRTM:
     handler: handler.SRTM
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
     - arn:aws:lambda:us-east-1:725820063953:layer:srtm-driver:1
   Sentinel1:
     handler: handler.Sentinel1
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
     - arn:aws:lambda:us-east-1:725820063953:layer:sentinel1-driver:1
   Sentinel2:
     handler: handler.Sentinel2
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
-    - arn:aws:lambda:us-east-1:725820063953:layer:sentinel2-driver:1
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
+    - arn:aws:lambda:us-east-1:725820063953:layer:sentinel2-driver:2
   USGS3DEP:
     handler: handler.USGS3DEP
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
     - arn:aws:lambda:us-east-1:725820063953:layer:usgs-3dep-driver:1
     - arn:aws:lambda:us-east-1:725820063953:layer:usgs-3dep-coverages:1
   worker:
@@ -62,8 +61,10 @@ functions:
         method: post
         path: /stac/search
     handler: handler.worker
+    memorySize: 3008
+    timeout: 10
     layers:
-    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:6
+    - arn:aws:lambda:us-east-1:725820063953:layer:cognition-datasources:8
 package:
   artifact: lambda-service-package.zip
 provider:
