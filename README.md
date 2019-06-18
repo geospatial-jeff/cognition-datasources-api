@@ -18,6 +18,7 @@ Supports the following datasets:
 
 This deployment was created with the following commands:
 ```
+# Install library
 git clone https://github.com/geospatial-jeff/cognition-datasources.git app
 cd app
 python setup.py develop
